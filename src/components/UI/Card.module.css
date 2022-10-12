@@ -1,0 +1,18 @@
+.card {
+    
+    width: 25em;
+    padding: .5em;
+    height: 100vh;
+    border-radius: 7px;
+    background-color: blue;
+    position: relative;
+}
+
+
+@media (min-width: 900px) {
+    .card {
+        background-color: white;
+        width: 56em;
+        
+    }
+}

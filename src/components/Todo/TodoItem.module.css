@@ -1,0 +1,43 @@
+.item {
+    background-color: #f2efef;
+    border-radius: 7px;
+    padding: .5em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: .5em 0;
+}
+
+.item:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+
+
+.item h1 {
+    font-size: 1em;
+}
+
+.item:hover .tickbox {
+    background-color: white;
+    
+}
+
+.item:hover p{
+    text-decoration-style: double;
+    
+}
+
+.item.checked{
+    background-color: #ccc;
+}
+
+.tickbox {
+    border-radius: 50%;
+    height: 1.5em;
+    width: 1.5em;
+    border: 1.8px solid red;
+    margin: .5em;
+}
