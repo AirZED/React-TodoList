@@ -4,14 +4,14 @@
     padding: .5em;
     height: 100vh;
     border-radius: 7px;
-    background-color: blue;
+    background-color:#ffffff;
     position: relative;
 }
 
 
 @media (min-width: 900px) {
     .card {
-        background-color: white;
+        background-color: #ffffff;
         width: 56em;
         
     }

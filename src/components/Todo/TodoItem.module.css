@@ -4,14 +4,17 @@
     padding: .5em;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
     margin: .5em 0;
 }
 
-.item:hover {
-    background-color: red;
-    cursor: pointer;
+
+.item-body {
+    padding: .3em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 
@@ -22,22 +25,34 @@
 
 .item:hover .tickbox {
     background-color: white;
-    
+
 }
 
-.item:hover p{
+.item:hover p {
     text-decoration-style: double;
-    
+
 }
 
-.item.checked{
+.item.checked {
     background-color: #ccc;
 }
 
 .tickbox {
-    border-radius: 50%;
-    height: 1.5em;
-    width: 1.5em;
-    border: 1.8px solid red;
+    border-radius: 99px;
+    height: 1.8em;
+    width: 1.8em;
+    border: 2px solid #51aa75;
     margin: .5em;
+    position: relative;
+}
+
+.tickbox>* {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 1.3em;
+    color: #51aa75;
 }

@@ -1,13 +1,14 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 //imported Components
-import TodoContext from "../../store/todo-context";
+import TodoContext from "../../../store/todo-context";
 
 //imported StyleSheet
 import classes from "./NewTodoForm.module.css";
 
 const NewTodoForm = (props) => {
   const TodoCtx = useContext(TodoContext);
+  const todos = TodoCtx.items;
 
   //todo input state initialization
   const [enteredTodo, setEnteredTodo] = useState("");
@@ -15,6 +16,38 @@ const NewTodoForm = (props) => {
   const onTodoEnterHandler = (event) => {
     setEnteredTodo(event.target.value);
   };
+
+  useEffect(() => {
+    const postTodos = async () => {
+      try {
+        const response = await fetch(
+          "https://starthub-todolist-default-rtdb.firebaseio.com/todos.json",
+          {
+            method: "PUT",
+            body: JSON.stringify(todos),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to Post Todo");
+        }
+
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        return error;
+      }
+    };
+    //running async fnc
+    postTodos()
+      .then((data) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [todos]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -27,7 +60,7 @@ const NewTodoForm = (props) => {
       todo: enteredTodo,
       id: Date.now(),
       deleted: false,
-      active: true,
+      inactive: false,
     });
 
     setEnteredTodo("");

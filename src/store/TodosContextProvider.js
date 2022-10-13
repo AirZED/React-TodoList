@@ -5,19 +5,19 @@ const DUMMY_TODOS = [
   {
     todo: "I Want to Sweep",
     id: "m1",
-    active: true,
+    inactive: true,
     deleted: false,
   },
   {
     todo: "I want to Leave the house for my Brother",
     id: "m2",
-    active: true,
+    inactive: true,
     deleted: false,
   },
   {
     todo: "I want to Leave the house for my Brother",
     id: "m2",
-    active: false,
+    inactive: false,
     deleted: true,
   },
 ];
