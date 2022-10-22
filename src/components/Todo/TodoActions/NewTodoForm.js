@@ -8,7 +8,8 @@ import classes from "./NewTodoForm.module.css";
 
 const NewTodoForm = (props) => {
   const TodoCtx = useContext(TodoContext);
-  const todos = TodoCtx.items;
+  const { items } = TodoCtx;
+  const { fetched } = TodoCtx;
 
   //todo input state initialization
   const [enteredTodo, setEnteredTodo] = useState("");
@@ -18,13 +19,19 @@ const NewTodoForm = (props) => {
   };
 
   useEffect(() => {
+    
+    if (!fetched) {
+      return;
+    }
+    //Checks and does not Post data on app initialization
+
     const postTodos = async () => {
       try {
         const response = await fetch(
           "https://starthub-todolist-default-rtdb.firebaseio.com/todos.json",
           {
             method: "PUT",
-            body: JSON.stringify(todos),
+            body: JSON.stringify(items),
             headers: {
               "Content-Type": "application/json",
             },
@@ -41,13 +48,16 @@ const NewTodoForm = (props) => {
         return error;
       }
     };
+
     //running async fnc
     postTodos()
-      .then((data) => {})
+      .then((data) => {
+        // console.log("Posting" + data);
+      })
       .catch((error) => {
         console.log(error);
       });
-  }, [todos]);
+  }, [items, fetched]);
 
   const submitHandler = (event) => {
     event.preventDefault();

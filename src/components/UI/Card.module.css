@@ -1,18 +1,20 @@
 .card {
-    
-    width: 25em;
+
+    width: 100%;
     padding: .5em;
-    height: 100vh;
+    height: auto;
     border-radius: 7px;
-    background-color:#ffffff;
+    background-color: #ffffff;
     position: relative;
+    margin-top: 5em;
+
 }
 
 
-@media (min-width: 900px) {
+/* @media (min-width: 900px) {
     .card {
         background-color: #ffffff;
         width: 56em;
         
     }
-}
+} */
